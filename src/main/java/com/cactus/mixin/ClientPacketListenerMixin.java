@@ -45,7 +45,8 @@ public abstract class ClientPacketListenerMixin {
                     if (player == mc.player) continue;
 
                     if (mc.player != null) {
-                        Component message = Component.literal("Player " + name + " logged out at X: " + x + " Y: " + y + " Z: " + z);
+                        Component message = Component.literal(String.format("Player %s logged out at X: %.1f Y: %.1f Z: %.1f", name, x, y, z));
+
 
                         mc.execute(() -> {
                             if (mc.player != null) {
