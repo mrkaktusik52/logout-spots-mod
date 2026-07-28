@@ -1,0 +1,30 @@
+{
+	"schemaVersion": 1,
+	"id": "logoutspots",
+	"version": "${version}",
+	"name": "LogoutSpots",
+	"description": "This mod writes the players exit location in the chat",
+	"authors": [
+		"MrKaktusik_52"
+	],
+	"contact": {
+		"discord": "mrkaktusik"
+	},
+	"license": "GPL-3.0",
+	"icon": "assets/logoutspots/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.cactus.LogoutSpots"
+		]
+	},
+	"mixins": [
+		"logoutspots.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.19.3",
+		"minecraft": "~1.21.4",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}
