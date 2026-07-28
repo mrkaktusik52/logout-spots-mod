@@ -1,5 +1,7 @@
 package com.cactus.mixin;
 
+import com.cactus.CustomRenderPipeline;
+import com.cactus.LogoutSpot;
 import com.cactus.LogoutSpots;
 
 import net.minecraft.client.Minecraft;
@@ -7,6 +9,7 @@ import net.minecraft.client.multiplayer.ClientPacketListener;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundPlayerInfoRemovePacket;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.phys.Vec3;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -32,9 +35,12 @@ public abstract class ClientPacketListenerMixin {
 
                 if (player != null) {
                     String name = player.getScoreboardName();
-                    int x = (int) player.getX();
-                    int y = (int) player.getY();
-                    int z = (int) player.getZ();
+                    float x = (float) player.getX();
+                    float y = (float) player.getY();
+                    float z = (float) player.getZ();
+
+                    Vec3 logoutCoords = new Vec3(x, y, z);
+                    CustomRenderPipeline.getInstance().addSpot(new LogoutSpot(name, logoutCoords));
 
                     if (player == mc.player) continue;
 
@@ -50,5 +56,7 @@ public abstract class ClientPacketListenerMixin {
                 }
             }
         } else return;
+
+
     }
 }

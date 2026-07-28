@@ -16,6 +16,9 @@
 	"entrypoints": {
 		"main": [
 			"com.cactus.LogoutSpots"
+		],
+		"client": [
+			"com.cactus.CustomRenderPipeline"
 		]
 	},
 	"mixins": [
